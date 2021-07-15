@@ -65,6 +65,10 @@ export const ProductInfo = styled.div`
   }
 
   button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 125px;
     height: 32px;
 
@@ -73,6 +77,5 @@ export const ProductInfo = styled.div`
 
     background-color: #000;
     border-radius: 5px;
-
   }
 `;

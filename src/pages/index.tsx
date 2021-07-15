@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import { ProductCard } from 'components/ProductCard';
 import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
 
 export default function Home() {
   return (
@@ -10,8 +11,10 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <Header />
-      <h1>Home</h1>
+
       <ProductCard />
+
+      <Footer />
     </>
   );
 }

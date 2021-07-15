@@ -13,12 +13,12 @@ export function Header() {
       </div>
 
       <div className="user">
-        <FiUser size="20px" />
+        <FiUser size="20px" color={light.colors.gray} />
         <span>Minha Conta</span>
       </div>
 
       <div className="cart">
-        <FiShoppingCart size="20px" />
+        <FiShoppingCart size="20px" color={light.colors.gray} />
         <span className="product-count">1</span>
       </div>
     </S.HeaderWrapper>

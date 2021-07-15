@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import light from "styles/theme/light";
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.header`
   width: 100%;
   height: 80px;
 
@@ -43,10 +43,15 @@ export const HeaderWrapper = styled.div`
   }
 
   .user {
+    display: flex;
+    align-items: center;
+
     margin-right: 1.5rem;
+
     svg {
       margin-right: 0.5rem;
     }
+
     span {
       font-weight: 400;
       font-size: 13px;
@@ -73,5 +78,4 @@ export const HeaderWrapper = styled.div`
 
       }
     }
-  }
 `;

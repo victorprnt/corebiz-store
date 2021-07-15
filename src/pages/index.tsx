@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { ProductCard } from 'components/ProductCard';
+
 export default function Home() {
   return (
     <>
@@ -8,6 +10,7 @@ export default function Home() {
       </Head>
 
       <h1>Home</h1>
+      <ProductCard />
     </>
   );
 }

@@ -11,6 +11,9 @@ export const ProductCardWrapper = styled.div`
     height: 200px;
   }
 
+  & + div {
+    margin-left: 6rem;
+  }
 `;
 
 export const ProductInfo = styled.div`

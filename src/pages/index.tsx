@@ -4,6 +4,8 @@ import { ProductCard } from 'components/ProductCard';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { Newsletter } from 'components/Newsletter';
+import { ProductSection } from 'components/ProductSection';
+import { Carousel } from 'components/Carousel';
 
 export default function Home() {
   return (
@@ -12,8 +14,10 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <Header />
+      <Carousel />
 
-      <ProductCard />
+      <ProductSection />
+
       <Newsletter />
       <Footer />
     </>

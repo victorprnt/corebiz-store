@@ -22,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    min-width: fit-content;
     background-color: ${theme.colors.background};
   }
 

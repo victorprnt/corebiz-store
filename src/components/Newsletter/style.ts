@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
+import theme from 'styles/theme/light'
+
 export const NewsletterWrapper = styled.section`
-  height: 146px;
+  max-height: 146px;
+  padding: 1.5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  background-color: ${theme.colors.sectionBackground};
 
   font: 700 1rem "Lato", sans-serif;
 
@@ -14,31 +19,58 @@ export const NewsletterWrapper = styled.section`
     margin-bottom: 1rem;
   }
 
-  input {
-    width: 240px;
+  .form{
+    input {
+      width: 240px;
+      height: 48px;
+      padding: 1rem;
+      margin-right: 0.5rem;
+
+      border: none;
+      border-radius: 5px;
+
+      &::placeholder {
+        font: 700 12px "Lato", sans-serif;
+        line-height: 14px;
+        color: #585858;
+      }
+    }
+
+    button {
+    width: 140px;
     height: 48px;
-    padding: 1rem;
-    margin-right: 0.5rem;
 
-    border: none;
+    font: 700 14px "Lato", sans-serif;
+    line-height: 14px;
+    color: #fff;
+    background-color: #000;
+
     border-radius: 5px;
-
-    &::placeholder {
-      font: 700 12px "Lato", sans-serif;
-      line-height: 14px;
-      color: #585858;
     }
   }
 
-  button {
-   width: 140px;
-   height: 48px;
+  @media (max-width: ${theme.screenSize.laptop}) {}
+  @media (max-width: ${theme.screenSize.tablet}) {}
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    max-height: 276px;
+    min-height: fit-content;
+    max-width: 320;
 
-   font: 700 14px "Lato", sans-serif;
-   line-height: 14px;
-   color: #fff;
-   background-color: #000;
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-   border-radius: 5px;
+      input {
+        width: 288px;
+        margin: 0;
+        margin-bottom: 1rem;
+      }
+
+      button {
+        width: 288px;
+      }
+    }
   }
 `;

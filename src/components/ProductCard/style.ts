@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
+import theme from "styles/theme/light";
+
 export const ProductCardWrapper = styled.div`
   width: 216px;
-  height: 353px;
+  max-height: 353px;
 
-  background-color: #E6E8EA;
+  background-color: ${theme.colors.cardBackground};
 
   img {
     width: 216px;
@@ -14,11 +16,28 @@ export const ProductCardWrapper = styled.div`
   & + div {
     margin-left: 6rem;
   }
+
+  @media (max-width: ${theme.screenSize.laptop}) { }
+  @media (max-width: ${theme.screenSize.tablet}) { }
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    width: 140px;
+
+    background-color: rgba(0,0,0,0);
+
+    img {
+      width: 142px;
+      height: 122px;
+    }
+
+    & + div {
+      margin-left: 1.5rem;
+    }
+  }
 `;
 
 export const ProductInfo = styled.div`
-  height: 153px;
-  width: 216px;
+  width: 100%;
+  /* height: 153px; */
 
   display: flex;
   flex-direction: column;

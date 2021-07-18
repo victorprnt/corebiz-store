@@ -5,7 +5,7 @@ export function Newsletter() {
   return (
     <S.NewsletterWrapper>
       <h1>Participe de nossas news com promoções e novidades!</h1>
-      <div>
+      <div className="form">
         <input type="text" className="name" placeholder="Digite seu nome" />
         <input type="text" className="email" placeholder="Digite seu email" />
         <button type="submit">Eu quero!</button>

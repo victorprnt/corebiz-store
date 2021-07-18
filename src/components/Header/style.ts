@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import light from "styles/theme/light";
+import theme from "styles/theme/light";
 
 export const HeaderWrapper = styled.header`
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
+  padding: 1rem;
 
   display: flex;
   justify-content: center;
@@ -24,7 +25,7 @@ export const HeaderWrapper = styled.header`
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 1px solid ${light.colors.gray};
+    border-bottom: 1px solid ${theme.colors.gray};
 
     input {
       width: 90%;
@@ -37,7 +38,7 @@ export const HeaderWrapper = styled.header`
         font-weight: 400;
         font-size: 13px;
         line-height: 17px;
-        color: ${light.colors.gray};
+        color: ${theme.colors.gray};
       }
     }
   }
@@ -56,26 +57,52 @@ export const HeaderWrapper = styled.header`
       font-weight: 400;
       font-size: 13px;
       line-height: 17px;
-      color: ${light.colors.gray};
+      color: ${theme.colors.gray};
     }
   }
 
   .cart {
     display: flex;
 
-      span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-        width: 1.25rem;
-        height: 1.25rem;
-        margin-left: 0.5rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-left: 0.5rem;
 
-        color: #fff;
-        background-color: ${light.colors.red};
-        border-radius: 50%;
+      color: #fff;
+      background-color: ${theme.colors.red};
+      border-radius: 50%;
 
+    }
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) { }
+  @media (max-width: ${theme.screenSize.tablet}) { }
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    display: flex;
+    flex-direction: column;
+
+    .menu {
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      img {
+        widows: 109px;
+        height: 25px;
+        margin: 0;
       }
     }
+
+    .search {
+      width: 95%;
+      margin: 0;
+    }
+  }
 `;

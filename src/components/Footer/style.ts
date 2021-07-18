@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import theme from "styles/theme/light"
+
 export const FooterWrapper = styled.footer`
   width: 100%;
   height: 213px;
@@ -72,5 +74,30 @@ export const FooterWrapper = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) {
+  }
+  @media (max-width: ${theme.screenSize.tablet}) {
+  }
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    min-height: 320px;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .location {
+      color: #fff;
+      margin: 0;
+      margin-bottom: 2rem;
+    }
+
+    .contact {
+      margin: 0;
+      margin-bottom: 2rem;
+    }
   }
 `;

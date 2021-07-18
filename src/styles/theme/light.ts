@@ -1,11 +1,11 @@
 export default {
   colors: {
-    background: '#F0F2F5',
-    sectionBackground:'#FFFFFF',
-    menuText: '#2a9d8f',
+    background:'#FFFFFF',
+    sectionBackground: '#F0F2F5',
+    gray: '#7A7A7A',
+    cardBackground: '#E6E8EA',
     menuIcons: '#e9c46a',
     title: '#363F5F',
-    gray: '#7A7A7A',
     red: '#F8475F',
     card: '#a8a8b3',
     priorityLow: '#33CC95',
@@ -16,5 +16,6 @@ export default {
   screenSize: {
     mobileL: '425px',
     tablet: '800px',
+    laptop: '1024px'
   },
 } as const;

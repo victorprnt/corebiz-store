@@ -1,6 +1,5 @@
 import Head from 'next/head';
 
-import { ProductCard } from 'components/ProductCard';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { Newsletter } from 'components/Newsletter';

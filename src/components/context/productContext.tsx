@@ -1,5 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { getProducts } from 'services/productServices';
+import {
+  getSelectedProductsFromLocalStorage,
+  storeSelectedProducts,
+} from 'utils/userPersitedProducts';
 
 interface ProductProviderProps {
   children: ReactNode;
@@ -36,7 +40,6 @@ export function ProductProvider(
 
   function updateCartProducts(product: ProductProps) {
     setCartProducts([...cartProducts, product]);
-    console.log(cartProducts);
   }
 
   async function fetchProducts() {
@@ -48,7 +51,15 @@ export function ProductProvider(
     setProducts(data);
   }
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(cartProducts);
+    setCartProducts(getSelectedProductsFromLocalStorage());
+    console.log(cartProducts);
+  }, []);
+
+  useEffect(() => {
+    storeSelectedProducts(cartProducts);
+  }, [cartProducts]);
 
   return (
     <ProductContext.Provider

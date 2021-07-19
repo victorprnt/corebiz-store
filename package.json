@@ -13,7 +13,11 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
+    "react-multi-carousel": "^2.6.3",
     "react-responsive": "^8.2.0",
+    "react-slick": "^0.28.1",
+    "react-slideshow-image": "^3.5.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
@@ -22,6 +26,7 @@
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "@types/react-responsive": "^8.0.3",
+    "@types/react-slick": "^0.23.5",
     "@types/styled-components": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",

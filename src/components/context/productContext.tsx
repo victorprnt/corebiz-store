@@ -7,7 +7,9 @@ interface ProductProviderProps {
 
 interface ProductContextData {
   products: ProductProps[];
+  cartProducts: ProductProps[];
 
+  updateCartProducts: (product: ProductProps) => void;
   fetchProducts: () => void;
   handleSetProducts: (any) => void;
 }
@@ -19,12 +21,8 @@ interface ProductProps {
   imageUrl: string;
   listPrice: number | null;
   price: number;
-  installments: InstallmentsProps;
-}
-
-interface InstallmentsProps {
-  quantity: number;
-  value: number;
+  installmentValue?: number | null;
+  installmentQuantity?: number | null;
 }
 
 export const ProductContext = createContext({} as ProductContextData);
@@ -34,6 +32,12 @@ export function ProductProvider(
   productsProps,
 ) {
   const [products, setProducts] = useState<ProductProps[]>([]);
+  const [cartProducts, setCartProducts] = useState<ProductProps[]>([]);
+
+  function updateCartProducts(product: ProductProps) {
+    setCartProducts([...cartProducts, product]);
+    console.log(cartProducts);
+  }
 
   async function fetchProducts() {
     const { data } = productsProps;
@@ -48,7 +52,13 @@ export function ProductProvider(
 
   return (
     <ProductContext.Provider
-      value={{ products, fetchProducts, handleSetProducts }}
+      value={{
+        products,
+        cartProducts,
+        updateCartProducts,
+        fetchProducts,
+        handleSetProducts,
+      }}
     >
       {children}
     </ProductContext.Provider>

@@ -5,7 +5,7 @@ import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { Newsletter } from 'components/Newsletter';
 import { ProductSection } from 'components/ProductSection';
-import { Carousel } from 'components/Carousel';
+import { Slider } from 'components/Slider';
 import {
   ProductContext,
   ProductProvider,
@@ -24,12 +24,7 @@ interface ProductProps {
   imageUrl: string;
   listPrice: number | null;
   price: number;
-  installments: InstallmentsProps;
-}
-
-interface InstallmentsProps {
-  quantity: number;
-  value: number;
+  installments: [{ quantity: number; value: number }];
 }
 
 export default function Home({ products }: ProductPropsData) {
@@ -39,7 +34,7 @@ export default function Home({ products }: ProductPropsData) {
         <title>Home</title>
       </Head>
       <Header />
-      <Carousel />
+      <Slider />
 
       <ProductSection products={products} />
 

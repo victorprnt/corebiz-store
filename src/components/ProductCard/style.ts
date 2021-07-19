@@ -63,9 +63,10 @@ export const ProductInfo = styled.div`
   }
 
   .original-price {
+    height: 1rem;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 0.75rem;
+    line-height: 1rem;
 
     color: #7a7a7a;
   }
@@ -79,9 +80,10 @@ export const ProductInfo = styled.div`
   }
 
   .installment {
+    height: 1.5rem;
     font-weight: 400;
     font-size: 11px;
-    line-height: 15px;
+    line-height: 1rem;
 
     color: #7a7a7a;
   }

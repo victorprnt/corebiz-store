@@ -1,5 +1,7 @@
 import * as S from './style';
 import { FaStar, FaRegStar } from 'react-icons/fa';
+import { useContext } from 'react';
+import { ProductContext } from 'components/context/productContext';
 
 interface ProductProps {
   productId: number;
@@ -8,12 +10,8 @@ interface ProductProps {
   imageUrl: string;
   listPrice: number | null;
   price: number;
-  installments: InstallmentsProps;
-}
-
-interface InstallmentsProps {
-  quantity: number;
-  value: number;
+  installmentValue?: number | null;
+  installmentQuantity?: number | null;
 }
 
 export function ProductCard({
@@ -23,8 +21,24 @@ export function ProductCard({
   imageUrl,
   listPrice,
   price,
-  installments: { quantity, value },
+  installmentValue,
+  installmentQuantity,
 }: ProductProps) {
+  const { updateCartProducts } = useContext(ProductContext);
+
+  function handleCartProducts() {
+    updateCartProducts({
+      productId,
+      productName,
+      stars,
+      imageUrl,
+      listPrice,
+      price,
+      installmentValue,
+      installmentQuantity,
+    });
+  }
+
   return (
     <S.ProductCardWrapper>
       <img src={imageUrl} alt={productName} />
@@ -33,12 +47,24 @@ export function ProductCard({
 
         <StarsRating productId={productId} starNumber={stars} />
 
-        <p className="original-price">R${listPrice}</p>
+        {listPrice ? (
+          <p className="original-price">R${listPrice}</p>
+        ) : (
+          <p className="original-price"></p>
+        )}
         <p className="current-price">R${price}</p>
-        <p className="installment">
-          ou em {quantity} de R${value}
-        </p>
-        <button type="button">COMPRAR</button>
+
+        {installmentQuantity ? (
+          <p className="installment">
+            ou em {installmentQuantity} de R${installmentValue}
+          </p>
+        ) : (
+          <p className="installment"></p>
+        )}
+
+        <button type="button" onClick={handleCartProducts}>
+          COMPRAR
+        </button>
       </S.ProductInfo>
     </S.ProductCardWrapper>
   );

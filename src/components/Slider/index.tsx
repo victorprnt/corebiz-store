@@ -1,9 +1,10 @@
 import { useMediaQuery } from 'react-responsive';
 
 import * as S from './style';
+import 'react-slideshow-image/dist/styles.css';
 import theme from 'styles/theme/light';
 
-export function Carousel() {
+export function Slider() {
   const smallScreen = useMediaQuery({
     query: `(max-width: ${theme.screenSize.mobileL})`,
   });

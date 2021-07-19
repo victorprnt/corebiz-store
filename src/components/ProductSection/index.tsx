@@ -17,12 +17,12 @@ interface ProductProps {
   imageUrl: string;
   listPrice: number | null;
   price: number;
-  installments: InstallmentsProps;
-}
-
-interface InstallmentsProps {
-  quantity: number;
-  value: number;
+  installments: [
+    {
+      quantity: number;
+      value: number;
+    },
+  ];
 }
 
 export function ProductSection({ products }: ProductPropsData) {
@@ -51,7 +51,8 @@ export function ProductSection({ products }: ProductPropsData) {
                     listPrice={product.listPrice}
                     price={product.price}
                     stars={product.stars}
-                    installments={product.installments}
+                    installmentQuantity={product.installments[0].quantity}
+                    installmentValue={product.installments[0].value}
                   />
                 );
               })}
@@ -68,7 +69,14 @@ export function ProductSection({ products }: ProductPropsData) {
                     listPrice={product.listPrice}
                     price={product.price}
                     stars={product.stars}
-                    installments={product.installments}
+                    installmentQuantity={
+                      product.installments.length > 0 &&
+                      product.installments[0].quantity
+                    }
+                    installmentValue={
+                      product.installments.length > 0 &&
+                      product.installments[0].value
+                    }
                   />
                 );
               })}

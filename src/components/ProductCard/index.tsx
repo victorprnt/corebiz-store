@@ -1,29 +1,62 @@
 import * as S from './style';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
-export function ProductCard() {
+interface ProductProps {
+  productId: number;
+  productName: string;
+  stars: number;
+  imageUrl: string;
+  listPrice: number | null;
+  price: number;
+  installments: InstallmentsProps;
+}
+
+interface InstallmentsProps {
+  quantity: number;
+  value: number;
+}
+
+export function ProductCard({
+  productId,
+  productName,
+  stars,
+  imageUrl,
+  listPrice,
+  price,
+  installments: { quantity, value },
+}: ProductProps) {
   return (
     <S.ProductCardWrapper>
-      <img
-        src="https://corebiz-test.herokuapp.com/images/product-1.png"
-        alt="sapato"
-      />
+      <img src={imageUrl} alt={productName} />
       <S.ProductInfo>
-        <p className="product-name">SAPATO</p>
+        <p className="product-name">{productName}</p>
 
-        <div className="stars">
-          <FaStar size="10" color="#F8475F" />
-          <FaRegStar size="10" color="#F8475F" />
-          <FaRegStar size="10" color="#F8475F" />
-          <FaRegStar size="10" color="#F8475F" />
-          <FaRegStar size="10" color="#F8475F" />
-        </div>
+        <StarsRating productId={productId} starNumber={stars} />
 
-        <p className="original-price">R$259,90</p>
-        <p className="current-price">R$159,90</p>
-        <p className="installment">ou em 9x de R$28,87</p>
+        <p className="original-price">R${listPrice}</p>
+        <p className="current-price">R${price}</p>
+        <p className="installment">
+          ou em {quantity} de R${value}
+        </p>
         <button type="button">COMPRAR</button>
       </S.ProductInfo>
     </S.ProductCardWrapper>
   );
+}
+
+interface StarProps {
+  productId: number;
+  starNumber: number;
+}
+
+function StarsRating({ productId, starNumber }: StarProps) {
+  const stars = [];
+
+  for (let i = 0; i < 5; i++) {
+    starNumber <= i
+      ? stars.push(<FaRegStar key={productId} size="10" color="#F8475F" />)
+      : stars.push(<FaStar key={productId} size="10" color="#F8475F" />);
+  }
+
+  return <div className="stars">{stars}</div>;
 }

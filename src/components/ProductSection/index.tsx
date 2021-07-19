@@ -1,24 +1,37 @@
 import { useMediaQuery } from 'react-responsive';
+import { useContext, useEffect, useState } from 'react';
 
 import { ProductCard } from 'components/ProductCard';
-import theme from 'styles/theme/light';
 import * as S from './style';
+import theme from 'styles/theme/light';
+import { ProductContext } from 'components/context/productContext';
 
-export function ProductSection() {
-  return (
-    <S.ProductSectionWrapper>
-      <ProductCarousel />
-    </S.ProductSectionWrapper>
-  );
+interface ProductPropsData {
+  products: ProductProps[];
 }
 
-function ProductCarousel() {
+interface ProductProps {
+  productId: number;
+  productName: string;
+  stars: number;
+  imageUrl: string;
+  listPrice: number | null;
+  price: number;
+  installments: InstallmentsProps;
+}
+
+interface InstallmentsProps {
+  quantity: number;
+  value: number;
+}
+
+export function ProductSection({ products }: ProductPropsData) {
   const smallScreen = useMediaQuery({
     query: `(max-width: ${theme.screenSize.mobileL})`,
   });
 
   return (
-    <S.ProductCarouselWrapper>
+    <S.ProductSectionWrapper>
       <div className="carousel-container">
         <h1>Mais Vendidos</h1>
         <div
@@ -28,19 +41,41 @@ function ProductCarousel() {
         <div className="carousel">
           {smallScreen ? (
             <>
-              <ProductCard />
-              <ProductCard />
+              {products.slice(0, 2).map(product => {
+                return (
+                  <ProductCard
+                    key={product.productId}
+                    productId={product.productId}
+                    productName={product.productName}
+                    imageUrl={product.imageUrl}
+                    listPrice={product.listPrice}
+                    price={product.price}
+                    stars={product.stars}
+                    installments={product.installments}
+                  />
+                );
+              })}
             </>
           ) : (
             <>
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {products.map(product => {
+                return (
+                  <ProductCard
+                    key={product.productId}
+                    productId={product.productId}
+                    productName={product.productName}
+                    imageUrl={product.imageUrl}
+                    listPrice={product.listPrice}
+                    price={product.price}
+                    stars={product.stars}
+                    installments={product.installments}
+                  />
+                );
+              })}
             </>
           )}
         </div>
       </div>
-    </S.ProductCarouselWrapper>
+    </S.ProductSectionWrapper>
   );
 }

@@ -5,19 +5,10 @@ import theme from "styles/theme/light";
 export const ProductSectionWrapper = styled.main`
   width: 100%;
   padding: 4rem;
-
-  background-color: #fff;
-
-  @media (max-width: ${theme.screenSize.laptop}) { }
-  @media (max-width: ${theme.screenSize.tablet}) { }
-  @media (max-width: ${theme.screenSize.mobileL}) {
-    padding: 0;
-  }
-`;
-
-export const ProductCarouselWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  background-color: #fff;
 
   .carousel-container {
     display: flex;
@@ -38,6 +29,8 @@ export const ProductCarouselWrapper = styled.div`
   @media (max-width: ${theme.screenSize.laptop}) { }
   @media (max-width: ${theme.screenSize.tablet}) { }
   @media (max-width: ${theme.screenSize.mobileL}) {
+    padding: 0;
+
     h1 {
       font-size: 1rem;
       line-height: 1.5rem;

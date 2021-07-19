@@ -16,7 +16,7 @@ export const ProductSectionWrapper = styled.main`
 
     h1 {
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 1.25rem;
       line-height: 2rem;
     }
 
@@ -29,7 +29,7 @@ export const ProductSectionWrapper = styled.main`
   @media (max-width: ${theme.screenSize.laptop}) { }
   @media (max-width: ${theme.screenSize.tablet}) { }
   @media (max-width: ${theme.screenSize.mobileL}) {
-    padding: 0;
+    padding: 1rem;
 
     h1 {
       font-size: 1rem;

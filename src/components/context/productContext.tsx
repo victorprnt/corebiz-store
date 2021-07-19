@@ -12,8 +12,11 @@ interface ProductProviderProps {
 interface ProductContextData {
   products: ProductProps[];
   cartProducts: ProductProps[];
+  isNewsletterAvailable: boolean;
 
   updateCartProducts: (product: ProductProps) => void;
+  updateNewsletterList: (name: string, email: string) => void;
+  updateIsNewsletterAvailable: (isAvailable: boolean) => void;
   fetchProducts: () => void;
   handleSetProducts: (any) => void;
 }
@@ -29,6 +32,11 @@ interface ProductProps {
   installmentQuantity?: number | null;
 }
 
+interface NewsletterProps {
+  name: string;
+  email: string;
+}
+
 export const ProductContext = createContext({} as ProductContextData);
 
 export function ProductProvider(
@@ -37,9 +45,19 @@ export function ProductProvider(
 ) {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [cartProducts, setCartProducts] = useState<ProductProps[]>([]);
+  const [newsletterList, setNewsletterList] = useState<NewsletterProps[]>([]);
+  const [isNewsletterAvailable, setIsNewsletterAvalable] = useState(true);
 
   function updateCartProducts(product: ProductProps) {
     setCartProducts([...cartProducts, product]);
+  }
+
+  function updateNewsletterList(name: string, email: string) {
+    setNewsletterList([...newsletterList, { name, email }]);
+  }
+
+  function updateIsNewsletterAvailable(isAvailable: boolean) {
+    setIsNewsletterAvalable(isAvailable);
   }
 
   async function fetchProducts() {
@@ -61,12 +79,19 @@ export function ProductProvider(
     storeSelectedProducts(cartProducts);
   }, [cartProducts]);
 
+  useEffect(() => {
+    console.log(newsletterList);
+  }, [newsletterList]);
+
   return (
     <ProductContext.Provider
       value={{
         products,
         cartProducts,
+        isNewsletterAvailable,
         updateCartProducts,
+        updateNewsletterList,
+        updateIsNewsletterAvailable,
         fetchProducts,
         handleSetProducts,
       }}

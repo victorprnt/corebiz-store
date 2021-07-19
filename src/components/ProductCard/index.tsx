@@ -41,22 +41,32 @@ export function ProductCard({
 
   return (
     <S.ProductCardWrapper>
-      <img src={imageUrl} alt={productName} />
-      <S.ProductInfo>
+      <div className="image-container">
+        {listPrice && (
+          <img src="/images/img-discount.png" alt="" className="discount-tag" />
+        )}
+        <img src={imageUrl} alt={productName} className="product-image" />
+      </div>
+      <div className="product-info">
         <p className="product-name">{productName}</p>
 
         <StarsRating productId={productId} starNumber={stars} />
 
         {listPrice ? (
-          <p className="original-price">R${listPrice}</p>
+          <p className="original-price">
+            R${(listPrice / 100).toFixed(2).replace('.', ',')}
+          </p>
         ) : (
           <p className="original-price"></p>
         )}
-        <p className="current-price">R${price}</p>
+        <p className="current-price">
+          R${(price / 100).toFixed(2).replace('.', ',')}
+        </p>
 
         {installmentQuantity ? (
           <p className="installment">
-            ou em {installmentQuantity} de R${installmentValue}
+            ou em {installmentQuantity} de R$
+            {(installmentValue / 100).toFixed(2).replace('.', ',')}
           </p>
         ) : (
           <p className="installment"></p>
@@ -65,7 +75,7 @@ export function ProductCard({
         <button type="button" onClick={handleCartProducts}>
           COMPRAR
         </button>
-      </S.ProductInfo>
+      </div>
     </S.ProductCardWrapper>
   );
 }
